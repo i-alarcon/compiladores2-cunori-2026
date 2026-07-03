@@ -1,0 +1,31 @@
+{
+    "name": "Compiladores 2 - CUNORI",
+    "image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye",
+    
+    // Instala Java y utilidades adicionales en el contenedor de la nube
+    "features": {
+        "ghcr.io/devcontainers/features/java:1": {
+            "version": "17",
+            "jdkDistro": "temurin"
+        }
+    },
+
+    // Configura e instala las extensiones de VS Code automáticamente para el alumno
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "mike-lischke.antlr4-code-generation",
+                "hediet.vscode-drawio"
+            ],
+            "settings": {
+                "antlr4.generation.language": "Python3",
+                "antlr4.generation.listeners": true,
+                "antlr4.generation.visitors": true
+            }
+        }
+    },
+
+    // Ejecuta comandos automáticos después de que el contenedor se crea
+    "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt"
+}
